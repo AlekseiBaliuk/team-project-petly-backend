@@ -24,6 +24,10 @@ const userSchema = Schema(
       type: String,
       required: [true, "Phone number is required"],
     },
+    birthday: {
+      type: String,
+      default: "00.00.0000",
+    },
     token: {
       type: String,
       default: null,
