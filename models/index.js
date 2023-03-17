@@ -1,5 +1,4 @@
+const { Friend } = require("./friend");
 const { User } = require("./user");
 
-module.exports = {
-  User,
-};
+module.exports = { Friend, User };
