@@ -1,4 +1,4 @@
-const { Notice } = require("../db/noticesModel");
+const { Notice } = require("../models/noticesModel");
 
 const listNoticeCategory = async (req) => {
   // const { _id: owner } = req.user;
@@ -10,7 +10,7 @@ const listNoticeCategory = async (req) => {
     skip,
     limit,
   });
-  return { notices, page, limit };
+  return { page, per_page: limit, notices };
 };
 
 const addNotice = async (req) => {
