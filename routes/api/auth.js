@@ -9,8 +9,6 @@ const { ctrlWrapper } = require("../../helpers");
 
 const { joiRegisterSchema, joiLoginSchema } = require("../../models/user");
 
-const router = express.Router();
-
 router.post(
   "/register",
   validation(joiRegisterSchema),
