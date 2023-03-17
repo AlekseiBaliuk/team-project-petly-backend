@@ -9,7 +9,7 @@
   "produces": ["application/json", "multipart/form-data"],
   "servers": [
     {
-      "url": ""
+      "url": "https://team-project-petly-backend.onrender.com"
     }
   ],
   "tags": [
