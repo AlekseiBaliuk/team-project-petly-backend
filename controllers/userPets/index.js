@@ -1,3 +1,3 @@
-const getUserPets = require("../users/getUserPets");
+const getUserPets = require("./getUserPets");
 
 module.exports = { getUserPets };

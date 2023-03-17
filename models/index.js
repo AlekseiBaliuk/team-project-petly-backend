@@ -1,3 +1,4 @@
-const { friendsSchema } = require("./friends");
+const { Friend } = require("./friend");
+const { User } = require("./user");
 
-module.exports = { friendsSchema };
+module.exports = { Friend, User };
