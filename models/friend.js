@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const friendsSchema = new Schema({
+const friendSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -20,6 +20,6 @@ const friendsSchema = new Schema({
   email: String,
 });
 
-const Friend = model("friends", friendsSchema);
+const Friend = model("friends", friendSchema);
 
 module.exports = Friend;
