@@ -1,5 +1,5 @@
 const { User } = require("../models");
-const { HttpErrors } = require("../helpers");
+const { HttpError } = require("../helpers");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 
@@ -10,17 +10,17 @@ const auth = async (req, res, next) => {
   const { authorization = "" } = req.headers;
   const [bearer, token] = authorization.split(" ");
   if (bearer !== "Bearer") {
-    throw new HttpErrors(401, "Not authorized");
+    throw new HttpError(401, "Not authorized");
   }
   if (!token) {
-    throw new HttpErrors(401, "Not authorized");
+    throw new HttpError(401, "Not authorized");
   }
   try {
     const { id } = jwt.verify(token, SECRET_KEY);
 
     const user = await User.findById(id);
     if (!user || !user.token) {
-      throw new HttpErrors(401, "Not authorized");
+      throw new HttpError(401, "Not authorized");
     }
     req.user = user;
     next();

@@ -9,7 +9,7 @@ const { ctrlWrapper } = require("../../helpers");
 
 const router = express.Router();
 
-router.get("/", ctrlWrapper(userCtrl.getUserData));
+router.get("/", auth, ctrlWrapper(userCtrl.getUserData));
 
 router.get("/pets", ctrlWrapper(petCtrl.getUserPets));
 

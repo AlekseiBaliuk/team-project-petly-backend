@@ -147,6 +147,40 @@
           }
         }
       }
+    },
+
+    "/api/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get all user's data",
+        "parameters": [],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {},
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDataResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
     }
   },
 
@@ -241,6 +275,7 @@
           }
         }
       },
+
       "LoginResponse": {
         "type": "object",
         "properties": {
@@ -264,6 +299,87 @@
               }
             }
           }
+        }
+      },
+
+      "UserDataResponse": {
+        "type": "object",
+        "properties": {
+           "status": {
+            "type": "string",
+            "description": "Successful operation",
+            "example": "success"
+          },
+          "code": {
+            "type": "integer",
+            "description": "Status code",
+            "example": "200"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "user": {
+                "email": {
+                  "type": "string",
+                  "description": "User's email",
+                  "format": "email"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "User's name",
+                  "example": "Anna"
+                },
+                "city": {
+                  "type": "string",
+                  "description": "User's location",
+                  "example": "Kyiv, Kyiv"
+                },
+                "phone": {
+                  "type": "string",
+                  "description": "User's phone",
+                  "example": "+380000000000"
+                },
+                "birthday": {
+                  "type": "string",
+                  "description": "User's region",
+                  "example": "2023-01-01T16:45:00.000Z"
+                },
+                "avatarURL": {
+                  "type": "string",
+                  "description": "User's phone",
+                  "example": null
+                },
+                "favorites": {
+                  "type": "array",
+                  "description": "User's phone",
+                  "example": []
+                }
+              },
+              "userPets": []
+            }
+          }
+        },
+        "example": {
+          "user": {
+            "name": "Bob",
+            "email": "user@example.com",
+            "city": "Kyiv, Kyiv",
+            "phone": "+380000000000",
+            "birthday": "2023-01-01T16:45:00.000Z",
+            "avatarURL": null,
+            "favorites": []
+          },
+          "userPets": [
+            {
+              "_id": "63d6364d0ae399c680890db1",
+              "name": "Pussy cat",
+              "birthday": "2004-01-01T00:00:00.000Z",
+              "breed": "German Shepherd",
+              "petsPhotoURL": null,
+              "comments": "MegaPuperSuperSobaken",
+              "owner": "63d597e17ca822bddfedb390"
+            }
+          ]
         }
       }
     },
