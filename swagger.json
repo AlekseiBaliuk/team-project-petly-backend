@@ -122,7 +122,7 @@
     },
 
     "/api/auth/logout": {
-      "post": {
+      "get": {
         "tags": ["Auth"],
         "summary": "User logout",
         "parameters": [],
