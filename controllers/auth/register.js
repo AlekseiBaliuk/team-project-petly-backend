@@ -1,5 +1,5 @@
 const { User } = require("../../models");
-const HttpErrors = require("../../helpers/HttpError");
+const { HttpError } = require("../../helpers");
 const bcrypt = require("bcrypt");
 const gravatar = require("gravatar");
 // const { sendEmail } = require("../../helpers");
@@ -9,7 +9,7 @@ const register = async (req, res) => {
   const { password, email, name, city, phone } = req.body;
   const user = await User.findOne({ email });
   if (user) {
-    throw HttpErrors(409, error.message);
+    throw HttpError(409, "Provided email already exists");
   }
   const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   const avatarURL = gravatar.url(email);

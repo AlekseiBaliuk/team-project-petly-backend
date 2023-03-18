@@ -197,23 +197,28 @@
             "description": "Status code",
             "example": "201"
           },
-          "user": {
+          "data": {
             "type": "object",
             "properties": {
-              "name": {
-                "type": "string",
-                "description": "User's name",
-                "example": "Bob"
-              },
-              "email": {
-                "type": "string",
-                "description": "User's email",
-                "format": "email"
-              },
-              "avatarURL": {
-                "type": "string",
-                "description": "User's avatar",
-                "example": "http://www.cloudinary.com"
+              "user": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "User's name",
+                    "example": "Bob"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "User's email",
+                    "format": "email"
+                  },
+                  "avatarURL": {
+                    "type": "string",
+                    "description": "User's avatar",
+                    "example": "http://www.cloudinary.com"
+                  }
+                }
               }
             }
           }
@@ -239,13 +244,23 @@
       "LoginResponse": {
         "type": "object",
         "properties": {
-          "user": {
+          "status": {
+            "type": "string",
+            "description": "Successful operation",
+            "example": "success"
+          },
+          "code": {
+            "type": "integer",
+            "description": "Status code",
+            "example": "200"
+          },
+          "data": {
             "type": "object",
             "properties": {
               "token": {
                 "type": "string",
                 "description": "User's token",
-                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZDUzMzI4ZTkyNmUzNzBkNGYwMTY3YSIsImlhdCI6MTY3NDkxNjY0OCwiZXhwIjoxNjc0OTk5NDQ4fQ.T5GjdzWA58e66QFCQaC4efICjn1SP-lG6u-DHs9_-LI"
+                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTU2OWRkZDk1ZDFiY2ZlZjY5YWI3MyIsImlhdCI6MTY3OTEyNTYwMywiZXhwIjoxNjc5MTI5MjAzfQ.gxoPbaMADIVSR4mPV1SFVEhIj2ao6scvPv86tqlHRNY"
               }
             }
           }
