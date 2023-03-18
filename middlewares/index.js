@@ -1,9 +1,11 @@
-const isValidId = require("./isValidId");
+const isValidPetId = require("./isValidPetId");
 const validation = require("./validation");
 const auth = require("./auth");
+const upload = require("./upload")
 
 module.exports = {
-  isValidId,
+  isValidPetId,
   validation,
   auth,
+  upload,
 };
