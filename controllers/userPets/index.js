@@ -1,3 +1,5 @@
 const getUserPets = require("./getUserPets");
+const addPet = require("./addPet");
+const removePet = require("./removePet");
 
-module.exports = { getUserPets };
+module.exports = { getUserPets, addPet, removePet };
