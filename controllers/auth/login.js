@@ -1,5 +1,5 @@
 const { User } = require("../../models");
-const HttpErrors = require("../../helpers/HttpError");
+const HttpError = require("../../helpers");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -10,11 +10,11 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (!user) {
-    throw HttpErrors(409, error.message);
+    throw HttpError(409, error.message);
   }
   const passCompare = bcrypt.compareSync(password, user.password);
   if (!passCompare) {
-    throw HttpErrors(401, "Password is wrong");
+    throw HttpError(401, "Password is wrong");
   }
   // if (!user.verify) {
   //   throw HttpErrors(403, " Email is not verified");
