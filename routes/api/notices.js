@@ -1,33 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
-// const {
-//   contactsValidation,
-//   favoriteValidation,
-// } = require("../middlewares/validationMiddleware");
+const { ctrlWrapper } = require("../../helpers");
+const { validation } = require("../../middlewares");
+const { isValidId } = require("../../middlewares");
 
-// const { asyncWrapper } = require("../helpers/apiHelpers");
-const noticesController = require("../../controllers/notices");
+const { joiNoticesSchema } = require("../../models/notice");
 
-// const { userTokenMiddleware } = require("../middlewares/authMiddleware");
+const { notices: ctrl } = require("../../controllers");
 
-// router.use(userTokenMiddleware);
-
-// router.get("/", asyncWrapper(listContactsController));
-
-// router.get("/:id", asyncWrapper(getContactByIdController));
-
-router.post("/", noticesController.addNoticeController);
-router.get("/:category", noticesController.listNoticeCategoryController);
-
-// router.delete("/:id", asyncWrapper(removeContactController));
-
-// router.put("/:id", contactsValidation, asyncWrapper(updateContactController));
-
-// router.patch(
-//   "/:id/favorite",
-//   favoriteValidation,
-//   asyncWrapper(favoriteContactController)
-// );
+router.post("/", validation(joiNoticesSchema), ctrlWrapper(ctrl.addNotice));
+router.get("/category/:category", ctrlWrapper(ctrl.listNoticeCategory));
+router.get("/:id", ctrlWrapper(ctrl.getNoticeById));
 
 module.exports = router;
