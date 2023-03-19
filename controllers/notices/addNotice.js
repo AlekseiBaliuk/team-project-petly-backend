@@ -1,16 +1,13 @@
 const { Notice } = require("../../models/notice");
 
-// const listNoticeCategoryController = async (req, res, next) => {
-//   const notices = await noticeService.listNoticeCategory(req);
-// };
-
 const addNotice = async (req, res, next) => {
-  //   const { _id: owner } = req.user;
-  const notice = new Notice(req.body);
+  const { _id: owner } = req.user;
+
+  const notice = new Notice({ ...req.body, owner });
 
   await notice.save();
 
-  res.status(200).json({ data: notice, status: "success" });
+  res.status(200).json({ notice, status: "success" });
 };
 
 module.exports = addNotice;
