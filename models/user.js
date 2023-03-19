@@ -61,6 +61,16 @@ const joiLoginSchema = Joi.object({
   password: Joi.string().required(),
 });
 
+const userUpdateSchema = Joi.object({
+  name: Joi.string().alphanum(),
+  email: Joi.string().min(7).max(63).email(),
+  birthday: Joi.date(),
+  phone: Joi.string()
+    .length(13)
+    .pattern(/^\+[380]{3}\d{7}/),
+  location: Joi.string().regex(/[A-Z][a-z]*,\s[A-Z][a-z]*/),
+});
+
 // const joiVerifyEmailSchema = Joi.object({
 //   email: Joi.string().required(),
 // });

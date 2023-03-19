@@ -7,7 +7,11 @@ const { validation, auth } = require("../../middlewares");
 
 const { ctrlWrapper } = require("../../helpers");
 
-const { joiRegisterSchema, joiLoginSchema } = require("../../models/user");
+const {
+  joiRegisterSchema,
+  joiLoginSchema,
+  userUpdateSchema,
+} = require("../../models/user");
 
 router.post(
   "/register",
@@ -17,7 +21,12 @@ router.post(
 
 router.post("/login", validation(joiLoginSchema), ctrlWrapper(ctrl.login));
 
-router.patch("/changeData", auth, ctrlWrapper(ctrl.changeData));
+router.patch(
+  "/changeData",
+  auth,
+  validation(userUpdateSchema),
+  ctrlWrapper(ctrl.changeData)
+);
 
 router.get("/logout", auth, ctrlWrapper(ctrl.logout));
 
