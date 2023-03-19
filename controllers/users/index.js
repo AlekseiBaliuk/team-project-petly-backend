@@ -1,3 +1,4 @@
 const getUserData = require("./getUserData");
+const changeData = require("./changeData");
 
-module.exports = { getUserData };
+module.exports = { getUserData, changeData };
