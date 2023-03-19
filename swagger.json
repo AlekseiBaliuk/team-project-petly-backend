@@ -524,6 +524,7 @@
           }
         }
       },
+      
       "get": {
         "tags": ["Notices"],
         "summary": "Get all my notices",
@@ -1258,7 +1259,7 @@
                 "description": "Notice price",
                 "example": 1
               },
-              "favorites": {
+              "favorite": {
                 "type": "array",
                 "description": "User's phone",
                 "example": []
@@ -1343,7 +1344,7 @@
               "description": "Notice price",
               "example": 1
             },
-            "favorites": {
+            "favorite": {
               "type": "array",
               "description": "User's phone",
               "example": []
