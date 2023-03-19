@@ -14,18 +14,14 @@ const addPet = async (req, res) => {
   });
 
   res.status(201).json({
-    status: "success",
-    code: 201,
-    data: {
-      newPet: {
-        _id,
-        name,
-        birthday,
-        breed,
-        petsPhotoURL: avatarURL,
-        comments,
-        owner,
-      },
+    newPet: {
+      _id,
+      name,
+      birthday,
+      breed,
+      petsPhotoURL: avatarURL,
+      comments,
+      owner,
     },
   });
 };

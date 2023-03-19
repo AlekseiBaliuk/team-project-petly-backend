@@ -181,6 +181,129 @@
           }
         }
       }
+    },
+
+    "/api/users/pets": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Add user pet",
+        "parameters": [],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {
+          "description": "Object of user pet",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserPetImgRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserPetRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddUserPetResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      },
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get all user's pets",
+        "parameters": [],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {},
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserPetsResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
+    },
+
+    "/api/users/pets/{petId}": {
+      "delete": {
+        "tags": ["Users"],
+        "summary": "Delete user pet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "petId",
+            "required": true,
+            "description": "Pet's id"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {},
+        "responses": {
+          "200": {
+            "description": "Pet deleted",
+            "content": {}
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {}
+          },
+          "404": {
+            "description": "Wrong address or id",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
     }
   },
 
@@ -305,17 +428,7 @@
       "UserDataResponse": {
         "type": "object",
         "properties": {
-           "status": {
-            "type": "string",
-            "description": "Successful operation",
-            "example": "success"
-          },
-          "code": {
-            "type": "integer",
-            "description": "Status code",
-            "example": "200"
-          },
-          "data": {
+          "user": {
             "type": "object",
             "properties": {
               "user": {
@@ -361,6 +474,7 @@
         },
         "example": {
           "user": {
+            "id": "641569ddd95d1bcfef69ab73",
             "name": "Bob",
             "email": "user@example.com",
             "city": "Kyiv, Kyiv",
@@ -378,6 +492,134 @@
               "petsPhotoURL": null,
               "comments": "MegaPuperSuperSobaken",
               "owner": "63d597e17ca822bddfedb390"
+            }
+          ]
+        }
+      },
+
+      "AddUserPetRequest": {
+        "type": "object",
+        "required": ["name", "birthday", "breed", "comments"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Pet's name",
+            "example": "Phil"
+          },
+          "birthday": {
+            "type": "string",
+            "description": "Pet's birthday",
+            "example": "2010-02-22"
+          },
+          "breed": {
+            "type": "string",
+            "description": "Pet's breed",
+            "example": "German Shepherd"
+          },
+          "petsPhotoURL": {
+            "type": "string",
+            "description": "User's photo"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Comments"
+          }
+        }
+      },
+
+      "AddUserPetImgRequest": {
+        "type": "object",
+        "required": ["name", "birthday", "breed", "comments"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Pet's name",
+            "example": "Phil"
+          },
+          "birthday": {
+            "type": "string",
+            "description": "Pet's birthday",
+            "example": "2010-02-22"
+          },
+          "breed": {
+            "type": "string",
+            "description": "Pet's breed",
+            "example": "German Shepherd"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Comments"
+          },
+          "imageURL": {
+            "type": "string",
+            "format": "binary"
+          }
+        }
+      },
+
+      "AddUserPetResponse": {
+        "type": "object",
+        "properties": {
+          "newPet": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "description": "User's pet id",
+                "example": "63d6364d0ae399c680890db1"
+              },
+              "name": {
+                "type": "string",
+                "description": "Pet's name",
+                "example": "Rex"
+              },
+              "birthday": {
+                "type": "string",
+                "description": "Pet's birthday",
+                "example": "2004-01-01T00:00:00.000Z"
+              },
+              "breed": {
+                "type": "string",
+                "description": "Pet's breed",
+                "example": "German Shepherd"
+              },
+              "petsPhotoURL": {
+                "type": "string",
+                "description": "User's photo"
+              },
+              "comments": {
+                "type": "string",
+                "description": "Comments",
+                "example": "MegaPuperSuperSobaken"
+              },
+              "owner": {
+                "type": "string",
+                "description": "User's email",
+                "example": "63d597e17ca822bddfedb390"
+              }
+            }
+          }
+        }
+      },
+
+      "UserPetsResponse": {
+        "type": "object",
+        "properties": {
+          "userPets": []
+        },
+        "example": {
+          "userPets": [
+            {
+              "_id": "63d6364d0ae399c680890db1",
+              "name": "Rex",
+              "birthday": "2004-01-01T00:00:00.000Z",
+              "breed": "German Shepherd",
+              "petsPhotoURL": null,
+              "comments": "MegaPuperSuperSobaken",
+              "owner": "63d597e17ca822bddfedb390",
+              "idCloudAvatar": "images/ubh97jh0dkptm8b936t5",
+              "createdAt": "2023-03-18T11:19:54.605Z",
+              "updatedAt": "2023-03-18T11:19:54.605Z"
             }
           ]
         }
