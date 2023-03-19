@@ -9,14 +9,11 @@ const addNoticeFavorite = async (req, res, next) => {
   const notice = await Notice.findOne({ _id: id });
 
   const { favorite } = notice;
+  console.log(favorite);
 
-  // const isNoticeAddFavorite = favorite.find(userId);
-  // console.log("Favorite", favorite);
-  // console.log(isNoticeAddFavorite);
-
-  // if (favorite.find(userId)) {
-  //   throw HttpError(409, "Notice already added to favorites");
-  // }
+  if (favorite.includes(userId)) {
+    throw HttpError(409, "Notice already added to favorites");
+  }
   favorite.push(userId);
 
   const newNotice = await Notice.findOneAndUpdate(
