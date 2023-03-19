@@ -16,7 +16,7 @@ const noticeSchema = new mongoose.Schema(
     name: {
       type: String,
     },
-    birthdate: {
+    birthday: {
       type: Date,
     },
     breed: {
@@ -39,8 +39,11 @@ const noticeSchema = new mongoose.Schema(
     price: {
       type: Number,
     },
-    image: {
+    avatarURL: {
       type: String,
+    },
+    price: {
+      type: Number,
     },
     favorite: [],
 
@@ -61,7 +64,7 @@ const joiNoticesSchema = Joi.object({
   category: Joi.string().required(),
   title: Joi.string().min(2).max(48).required(),
   name: Joi.string().min(2).max(16).required(),
-  birthdate: Joi.date().required(),
+  birthday: Joi.date().required(),
   breed: Joi.string().min(2).max(24).required(),
   sex: Joi.string().required(),
   location: Joi.string().required(),

@@ -16,7 +16,7 @@ const userSchema = Schema(
       type: String,
       required: [true, "Username is required"],
     },
-    city: {
+    location: {
       type: String,
       required: [true, "City/region is required"],
     },
@@ -35,6 +35,10 @@ const userSchema = Schema(
     avatarURL: {
       type: String,
       required: true,
+    },
+    idCloudAvatar: {
+      type: String,
+      default: null,
     },
     // verify: {
     //   type: Boolean,

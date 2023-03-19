@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { auth: ctrl } = require("../../controllers");
 
-const { validation, auth } = require("../../middlewares");
+const { validation, auth, upload } = require("../../middlewares");
 
 const { ctrlWrapper } = require("../../helpers");
 
@@ -24,6 +24,7 @@ router.post("/login", validation(joiLoginSchema), ctrlWrapper(ctrl.login));
 router.patch(
   "/changeData",
   auth,
+  upload.single("image"),
   validation(userUpdateSchema),
   ctrlWrapper(ctrl.changeData)
 );
