@@ -54,7 +54,7 @@ const userSchema = Schema(
 
 const joiRegisterSchema = Joi.object({
   email: Joi.string().min(7).max(63).email().required(),
-  password: Joi.string().required(),
+  password: Joi.string().trim(true).min(7).max(32).pattern(/^\S*$/).required(),
   name: Joi.string().alphanum().required(),
   location: Joi.string()
     .regex(/[A-Z][a-z]*,\s[A-Z][a-z]*/)
