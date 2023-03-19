@@ -49,15 +49,20 @@ const userSchema = Schema(
 );
 
 const joiRegisterSchema = Joi.object({
-  email: Joi.string().required(),
+  email: Joi.string().min(7).max(63).email().required(),
   password: Joi.string().required(),
-  name: Joi.string().required(),
-  city: Joi.string().required(),
-  phone: Joi.string().required(),
+  name: Joi.string().alphanum().required(),
+  location: Joi.string()
+    .regex(/[A-Z][a-z]*,\s[A-Z][a-z]*/)
+    .required(),
+  phone: Joi.string()
+    .length(13)
+    .pattern(/^\+[380]{3}\d{7}/)
+    .required(),
 });
 
 const joiLoginSchema = Joi.object({
-  email: Joi.string().required(),
+  email: Joi.string().min(7).max(63).email().required(),
   password: Joi.string().required(),
 });
 
