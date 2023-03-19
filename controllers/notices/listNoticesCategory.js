@@ -10,9 +10,7 @@ const listNoticeCategory = async (req, res) => {
     skip,
     limit,
   }).sort({ createdAt: -1 });
-  res
-    .status(200)
-    .json({ page, per_page: limit, data: notices, status: "success" });
+  res.status(200).json(notices);
 };
 
 module.exports = listNoticeCategory;

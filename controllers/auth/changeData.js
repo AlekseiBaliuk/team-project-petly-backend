@@ -1,6 +1,9 @@
 const { User } = require("../../models");
+const { cloudinaryImgUpload } = require("../../helpers");
 
 const changeData = async (req, res) => {
+  const { avatarURL, idCloudAvatar } = await cloudinaryImgUpload(req);
+
   const { email, name, city, phone, birthday } = req.body;
   const { _id } = req.user;
   let result;
@@ -19,13 +22,22 @@ const changeData = async (req, res) => {
   if (birthday) {
     result = await User.findByIdAndUpdate(_id, { birthday }, { new: true });
   }
+  if (avatarURL) {
+    result = await User.findByIdAndUpdate(
+      _id,
+      { avatarURL, idCloudAvatar },
+      { new: true }
+    );
+  }
 
   res.status(200).json({
-    status: "success",
-    code: 200,
-    message: "user's info updated",
-    data: {
-      result,
+    user: {
+      name,
+      email,
+      city,
+      phone,
+      birthday,
+      avatarURL,
     },
   });
 };

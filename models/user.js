@@ -16,7 +16,7 @@ const userSchema = Schema(
       type: String,
       required: [true, "Username is required"],
     },
-    city: {
+    location: {
       type: String,
       required: [true, "City/region is required"],
     },
@@ -36,6 +36,10 @@ const userSchema = Schema(
       type: String,
       required: true,
     },
+    idCloudAvatar: {
+      type: String,
+      default: null,
+    },
     // verify: {
     //   type: Boolean,
     //   default: false,
@@ -52,7 +56,7 @@ const joiRegisterSchema = Joi.object({
   email: Joi.string().required(),
   password: Joi.string().required(),
   name: Joi.string().required(),
-  city: Joi.string().required(),
+  location: Joi.string().required(),
   phone: Joi.string().required(),
 });
 

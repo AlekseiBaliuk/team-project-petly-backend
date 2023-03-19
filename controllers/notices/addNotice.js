@@ -7,7 +7,7 @@ const addNotice = async (req, res, next) => {
 
   await notice.save();
 
-  res.status(200).json({ notice, status: "success" });
+  res.status(200).json(notice);
 };
 
 module.exports = addNotice;
