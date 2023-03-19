@@ -17,6 +17,8 @@ router.post(
 
 router.post("/login", validation(joiLoginSchema), ctrlWrapper(ctrl.login));
 
+router.patch("/changeData", auth, ctrlWrapper(ctrl.changeData));
+
 router.get("/logout", auth, ctrlWrapper(ctrl.logout));
 
 // router.get(
