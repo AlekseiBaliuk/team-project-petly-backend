@@ -24,6 +24,7 @@ const auth = async (req, res, next) => {
       next(HttpError(401, "Not authorized"));
     }
     req.user = user;
+
     next();
   } catch (error) {
     if ((error.message = "Invalid signature")) {
