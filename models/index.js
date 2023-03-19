@@ -3,5 +3,6 @@ const { User } = require("./user");
 const { UserPet } = require("./userPets");
 const { userPetSchema } = require("./userPets");
 const { Notice } = require("./notice");
+const { News } = require("./News");
 
-module.exports = { Friend, User, UserPet, userPetSchema, Notice };
+module.exports = { User, UserPet, userPetSchema, Notice, News, Friend };
