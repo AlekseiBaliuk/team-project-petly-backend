@@ -81,4 +81,5 @@ module.exports = {
   User,
   joiRegisterSchema,
   joiLoginSchema,
+  userUpdateSchema,
 };
