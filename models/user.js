@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const Joi = require("joi");
+const { handleMongooseError } = require("../helpers");
 
 const userSchema = Schema(
   {
@@ -51,6 +52,8 @@ const userSchema = Schema(
   },
   { versionKey: false, timestamps: true }
 );
+
+userSchema.post("update", handleMongooseError);
 
 const joiRegisterSchema = Joi.object({
   email: Joi.string().min(7).max(63).email().required(),

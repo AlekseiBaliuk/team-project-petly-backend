@@ -799,11 +799,6 @@
                   "type": "string",
                   "description": "User's phone",
                   "example": null
-                },
-                "favorites": {
-                  "type": "array",
-                  "description": "User's phone",
-                  "example": []
                 }
               },
               "userPets": []
@@ -1053,7 +1048,7 @@
               "description": "Notice comments",
               "example": "Murzik for sale"
             },
-            "avatarURL": {
+            "image": {
               "type": "string",
               "description": "Pet's avatar",
               "example": "https://"
