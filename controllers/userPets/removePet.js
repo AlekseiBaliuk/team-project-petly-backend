@@ -5,6 +5,11 @@ const removePet = async (req, res) => {
   const { _id: owner } = req.user;
   const { petId } = req.params;
 
+  const pet = await UserPet.findOne(petId);
+  await cloudinary.uploader.destroy(pet.idCloudAvatar, {
+    folder: "images",
+  });
+
   const result = await UserPet.findOneAndRemove({ _id: petId, owner });
 
   if (!result) {

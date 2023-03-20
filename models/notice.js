@@ -17,7 +17,8 @@ const noticeSchema = new mongoose.Schema(
       type: String,
     },
     birthday: {
-      type: Date,
+      type: String,
+      default: null,
     },
     breed: {
       type: String,
@@ -52,6 +53,10 @@ const noticeSchema = new mongoose.Schema(
       ref: "user",
       require: true,
     },
+    idCloudAvatar: {
+      type: String,
+      default: null,
+    },
   },
 
   {
@@ -64,13 +69,15 @@ const joiNoticesSchema = Joi.object({
   category: Joi.string().required(),
   title: Joi.string().min(2).max(48).required(),
   name: Joi.string().min(2).max(16).required(),
-  birthday: Joi.date().required(),
+  birthday: Joi.string()
+    .regex(/^\d{2}\.\d{2}\.\d{4}$/)
+    .required(),
   breed: Joi.string().min(2).max(24).required(),
   sex: Joi.string().required(),
   location: Joi.string().required(),
   comments: Joi.string().min(8).max(120).required(),
   price: Joi.number(),
-  image: Joi.string(),
+  avatarURL: Joi.string(),
 });
 
 const Notice = mongoose.model("notice", noticeSchema);

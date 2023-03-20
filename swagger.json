@@ -806,7 +806,7 @@
       "UpdateUserImgRequest": {
         "type": "object",
         "properties": {
-          "imageURL": {
+          "avatarURL": {
             "type": "string",
             "format": "binary"
           }
@@ -969,7 +969,7 @@
             "type": "string",
             "description": "Comments"
           },
-          "imageURL": {
+          "avatarURL": {
             "type": "string",
             "format": "binary"
           }
@@ -1056,7 +1056,7 @@
               "title": "Притулок для бездомних тварин 'Сіріус'",
               "url": "https://",
               "addressUrl": "https://",
-              "imageUrl": "https://",
+              "avatarURL": "https://",
               "address": "Fedorivka, Kyiv Oblast, Ukraine, 07372",
               "workDays": [],
               "phone": "+380000000000",
@@ -1101,7 +1101,7 @@
               "location": "Kyiv, Kyiv",
               "sex": "male",
               "comments": "Murzik for sale",
-              "image": "https://",
+              "avatarURL": "https://",
               "price": 1,
               "favorite": [],
               "owner": "64170f9d4b7fae4970a34473"
@@ -1231,7 +1231,7 @@
             "description": "Notice price",
             "example": 1
           },
-          "imageURL": {
+          "avatarURL": {
             "type": "string",
             "format": "binary"
           }
@@ -1451,7 +1451,7 @@
             "description": "Notice comments",
             "example": "Mursik for sale"
           },
-          "image": {
+          "avatarURL": {
             "type": "string",
             "description": "Pet's avatar",
             "example": "https://"

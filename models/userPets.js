@@ -8,7 +8,7 @@ const petSchema = new Schema(
       required: [true, "Name is required"],
     },
     birthday: {
-      type: Date,
+      type: String,
       required: [true, "Birthday is required"],
     },
     breed: {
@@ -45,7 +45,9 @@ const userPetSchema = Joi.object({
     .max(16)
     .regex(/^[a-zA-Z\s]*$/)
     .required(),
-  birthday: Joi.date().required(),
+  birthday: Joi.string()
+    .regex(/^\d{2}\.\d{2}\.\d{4}$/)
+    .required(),
   breed: Joi.string()
     .trim(true)
     .min(2)
