@@ -4,15 +4,13 @@ const listUserFavorite = async (req, res) => {
   const { _id: userId } = req.user;
   const { page, limit } = req.query;
 
-  console.log(userId);
-
   const skip = (page - 1) * limit;
 
-  const notice = await Notice.find(
+  const notices = await Notice.find(
     {
       favorite: { $in: userId },
     },
-    "-createdAt -updatedAt ",
+    "-createdAt -updatedAt",
     {
       skip,
       limit,
@@ -21,7 +19,7 @@ const listUserFavorite = async (req, res) => {
     createdAt: -1,
   });
 
-  res.status(200).json(notice);
+  res.status(200).json({ notices });
 };
 
 module.exports = listUserFavorite;

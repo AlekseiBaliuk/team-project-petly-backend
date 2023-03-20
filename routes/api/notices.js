@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { ctrlWrapper } = require("../../helpers");
-const { validation, isValidPetId, auth, upload } = require("../../middlewares");
+const { validation, isValidId, auth, upload } = require("../../middlewares");
 
 const { joiNoticesSchema } = require("../../models/notice");
 
@@ -10,8 +10,8 @@ const { notices: ctrl } = require("../../controllers");
 
 router.get("/category/:category", ctrlWrapper(ctrl.listNoticeCategory));
 router.get("/title/:title", ctrlWrapper(ctrl.listNoticeTitle));
-router.get("/:id", isValidPetId, ctrlWrapper(ctrl.getNoticeById));
-router.get("/user/favorite", auth, ctrlWrapper(ctrl.listUserFavorite));
+router.get("/:id", isValidId, ctrlWrapper(ctrl.getNoticeById));
+router.get("/user/favorites", auth, ctrlWrapper(ctrl.listUserFavorite));
 router.get("/", auth, ctrlWrapper(ctrl.listUserNotices));
 router.post(
   "/",
@@ -22,17 +22,17 @@ router.post(
 );
 router.post(
   "/favorites/:id",
-  isValidPetId,
+  isValidId,
   auth,
   ctrlWrapper(ctrl.addNoticeFavorite)
 );
 
 router.delete(
   "/favorites/:id",
-  isValidPetId,
+  isValidId,
   auth,
   ctrlWrapper(ctrl.delNoticeFavorite)
 );
-router.delete("/:id", isValidPetId, auth, ctrlWrapper(ctrl.delUserNotice));
+router.delete("/:id", isValidId, auth, ctrlWrapper(ctrl.delUserNotice));
 
 module.exports = router;

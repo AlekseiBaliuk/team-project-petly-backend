@@ -14,7 +14,7 @@ const delUserNotice = async (req, res, next) => {
 
   await Notice.findOneAndRemove({ _id: id, owner: userId });
 
-  res.status(200).json({ status: "success" });
+  res.status(200).json({ message: "Notice deleted" });
 };
 
 module.exports = delUserNotice;
