@@ -6,7 +6,7 @@ const gravatar = require("gravatar");
 const { v4 } = require("uuid");
 
 const register = async (req, res) => {
-  const { password, email, name, city, phone } = req.body;
+  const { password, email, name, location, phone } = req.body;
   const user = await User.findOne({ email });
   if (user) {
     throw HttpError(409, "Provided email already exists");
@@ -18,7 +18,7 @@ const register = async (req, res) => {
     password: hashPassword,
     email,
     name,
-    city,
+    location,
     phone,
     avatarURL,
   });

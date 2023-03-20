@@ -57,7 +57,7 @@ const joiRegisterSchema = Joi.object({
   password: Joi.string().trim(true).min(7).max(32).pattern(/^\S*$/).required(),
   name: Joi.string().alphanum().required(),
   location: Joi.string()
-    .regex(/[A-Z][a-z]*,\s[A-Z][a-z]*/)
+    .regex(/^[A-Za-z\s]+,\s[A-Za-z\s]+$/)
     .required(),
   phone: Joi.string()
     .length(13)
