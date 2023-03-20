@@ -1,8 +1,8 @@
 const { User } = require("../../models");
 const { cloudinaryImgUpload } = require("../../helpers");
+const cloudinary = require("cloudinary").v2;
 
 const changeData = async (req, res) => {
-  // const { avatarURL, idCloudAvatar } = await cloudinaryImgUpload(req);
   let userAvatarURL = null;
   let userIdCloudAvatar = null;
 
@@ -30,11 +30,13 @@ const changeData = async (req, res) => {
   if (birthday) {
     result = await User.findByIdAndUpdate(_id, { birthday }, { new: true });
   }
-  if (avatarURL) {
-    const user = await User.findOne(id);
-    await cloudinary.uploader.destroy(user.idCloudAvatar, {
-      folder: "images",
-    });
+  if (userAvatarURL) {
+    const user = await User.findOne({ _id });
+    if (user.idCloudAvatar) {
+      await cloudinary.uploader.destroy(user.idCloudAvatar, {
+        folder: "images",
+      });
+    }
 
     result = await User.findByIdAndUpdate(
       _id,
