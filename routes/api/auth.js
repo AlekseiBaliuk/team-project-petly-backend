@@ -31,15 +31,4 @@ router.patch(
 
 router.get("/logout", auth, ctrlWrapper(ctrl.logout));
 
-// router.get(
-//   "/verify/:verificationToken",
-//   ctrlWrapper(ctrl.verifyEmail)
-// );
-
-// router.post(
-//   "/verify",
-//   validation(joiVerifyEmailSchema),
-//   ctrlWrapper(ctrl.resendVerifyEmail)
-// );
-
 module.exports = router;

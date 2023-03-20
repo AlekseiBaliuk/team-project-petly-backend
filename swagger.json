@@ -987,7 +987,7 @@
               "birthday": {
                 "type": "string",
                 "description": "User's birthday",
-                "example": "2023-01-01T16:45:00.000Z"
+                "example": "20.04.2022"
               }
             }
           }
@@ -1024,7 +1024,7 @@
                 "birthday": {
                   "type": "string",
                   "description": "User's region",
-                  "example": "2023-01-01T16:45:00.000Z"
+                  "example": "20.04.2022"
                 },
                 "avatarURL": {
                   "type": "string",
@@ -1043,7 +1043,7 @@
             "email": "user@example.com",
             "location": "Kyiv, Kyiv",
             "phone": "+380000000000",
-            "birthday": "2023-01-01T16:45:00.000Z",
+            "birthday": "20.04.2022",
             "avatarURL": null,
             "favorites": []
           },
@@ -1051,7 +1051,7 @@
             {
               "_id": "63d6364d0ae399c680890db1",
               "name": "Pussy cat",
-              "birthday": "2004-01-01T00:00:00.000Z",
+              "birthday": "20.04.2022",
               "breed": "German Shepherd",
               "petsPhotoURL": null,
               "comments": "MegaPuperSuperSobaken",
@@ -1140,7 +1140,7 @@
               "birthday": {
                 "type": "string",
                 "description": "Pet's birthday",
-                "example": "2004-01-01T00:00:00.000Z"
+                "example": "20.04.2022"
               },
               "breed": {
                 "type": "string",
@@ -1176,7 +1176,7 @@
             {
               "_id": "63d6364d0ae399c680890db1",
               "name": "Rex",
-              "birthday": "2004-01-01T00:00:00.000Z",
+              "birthday": "20.04.2022",
               "breed": "German Shepherd",
               "petsPhotoURL": null,
               "comments": "MegaPuperSuperSobaken",
