@@ -6,7 +6,7 @@ const noticeSchema = new mongoose.Schema(
   {
     category: {
       type: String,
-      enum: ["sell", "lost_found", "for_free"],
+      enum: ["sell", "lost-found", "in-good-hands"],
     },
     title: {
       type: String,
@@ -70,7 +70,7 @@ const joiNoticesSchema = Joi.object({
   location: Joi.string().required(),
   comments: Joi.string().min(8).max(120).required(),
   price: Joi.number(),
-  image: Joi.string().required(),
+  image: Joi.string(),
 });
 
 const Notice = mongoose.model("notice", noticeSchema);
