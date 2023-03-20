@@ -2,7 +2,15 @@ const { User } = require("../../models");
 const { cloudinaryImgUpload } = require("../../helpers");
 
 const changeData = async (req, res) => {
-  const { avatarURL, idCloudAvatar } = await cloudinaryImgUpload(req);
+  // const { avatarURL, idCloudAvatar } = await cloudinaryImgUpload(req);
+  let userAvatarURL = null;
+  let userIdCloudAvatar = null;
+
+  if (req.file) {
+    const { avatarURL, idCloudAvatar } = await cloudinaryImgUpload(req);
+    userAvatarURL = avatarURL;
+    userIdCloudAvatar = idCloudAvatar;
+  }
 
   const { email, name, city, phone, birthday } = req.body;
   const { _id } = req.user;
@@ -27,10 +35,10 @@ const changeData = async (req, res) => {
     await cloudinary.uploader.destroy(user.idCloudAvatar, {
       folder: "images",
     });
-    
+
     result = await User.findByIdAndUpdate(
       _id,
-      { avatarURL, idCloudAvatar },
+      { avatarURL: userAvatarURL, idCloudAvatar: userIdCloudAvatar },
       { new: true }
     );
   }
@@ -42,7 +50,7 @@ const changeData = async (req, res) => {
       city,
       phone,
       birthday,
-      avatarURL,
+      avatarURL: userAvatarURL,
     },
   });
 };

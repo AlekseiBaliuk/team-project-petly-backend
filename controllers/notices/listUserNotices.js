@@ -8,7 +8,7 @@ const listUserNotices = async (req, res) => {
   const skip = (page - 1) * limit;
   const notices = await Notice.find(
     { owner: userId },
-    "-createdAt -updatedAt ",
+    "-createdAt -updatedAt -idCloudAvatar",
     {
       skip,
       limit,

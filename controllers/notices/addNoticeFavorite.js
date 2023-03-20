@@ -17,7 +17,11 @@ const addNoticeFavorite = async (req, res, next) => {
     { $push: { favorite: userId } }
   );
 
-  res.status(200).json({ notice, status: "success" });
+  res.status(200).json({
+    userId: userId,
+    noticeId: notice._id,
+    message: "success",
+  });
 };
 
 module.exports = addNoticeFavorite;

@@ -17,7 +17,7 @@ const delNoticeFavorite = async (req, res, next) => {
     { $pull: { favorite: userId } }
   );
 
-  res.status(200).json({ notice, status: "success" });
+  res.status(200).json({ message: "Deleted from favorites" });
 };
 
 module.exports = delNoticeFavorite;

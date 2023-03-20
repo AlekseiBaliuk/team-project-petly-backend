@@ -6,8 +6,8 @@ const listNoticeTitle = async (req, res) => {
 
   const skip = (page - 1) * limit;
   const notices = await Notice.find(
-    { title: { $regex: title } },
-    "-createdAt -updatedAt ",
+    { title: { $regex: new RegExp(title, "i") } },
+    "-createdAt -updatedAt -idCloudAvatar",
     {
       skip,
       limit,

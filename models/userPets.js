@@ -46,7 +46,34 @@ const userPetSchema = Joi.object({
     .regex(/^[a-zA-Z\s]*$/)
     .required(),
   birthday: Joi.string()
-    .regex(/^\d{2}\.\d{2}\.\d{4}$/)
+    .regex(/^([0-2][1-9]|[1-3]0|31)\.(0[1-9]|1[0-2])\.\d{4}$/)
+    .required()
+    .custom((value, helpers) => {
+      const day = parseInt(value.slice(0, 2));
+      const month = parseInt(value.slice(3, 5));
+      const year = parseInt(value.slice(6));
+
+      if (day > 31 || (month === 2 && day > 29)) {
+        return helpers.error("any.invalid");
+      }
+
+      if (month === 4 || month === 6 || month === 9 || month === 11) {
+        if (day > 30) {
+          return helpers.error("any.invalid");
+        }
+      }
+
+      if (year < 1000 || year > 9999) {
+        return helpers.error("any.invalid");
+      }
+
+      return value;
+    })
+    .messages({
+      "string.pattern.base":
+        "Invalid date, date must be in the format dd.mm.yyyy",
+      "any.invalid": "Invalid date",
+    })
     .required(),
   breed: Joi.string()
     .trim(true)

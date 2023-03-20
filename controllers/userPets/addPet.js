@@ -2,15 +2,22 @@ const { UserPet } = require("../../models");
 const { cloudinaryImgUpload } = require("../../helpers");
 
 const addPet = async (req, res) => {
-  const { avatarURL, idCloudAvatar } = await cloudinaryImgUpload(req);
+  let petAvatarURL = null;
+  let petIdCloudAvatar = null;
+
+  if (req.file) {
+    const { avatarURL, idCloudAvatar } = await cloudinaryImgUpload(req);
+    petAvatarURL = avatarURL;
+    petIdCloudAvatar = idCloudAvatar;
+  }
 
   const { _id: owner } = req.user;
 
   const { _id, name, birthday, breed, comments } = await UserPet.create({
     ...req.body,
-    petsPhotoURL: avatarURL,
+    petsPhotoURL: petAvatarURL,
     owner,
-    idCloudAvatar,
+    idCloudAvatar: petIdCloudAvatar,
   });
 
   res.status(201).json({
@@ -19,7 +26,7 @@ const addPet = async (req, res) => {
       name,
       birthday,
       breed,
-      petsPhotoURL: avatarURL,
+      petsPhotoURL: petAvatarURL,
       comments,
       owner,
     },
