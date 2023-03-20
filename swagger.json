@@ -569,6 +569,92 @@
           }
         }
       }
+    },
+
+    "/api/notices/{noticeId}": {
+      "get": {
+        "tags": ["Notices"],
+        "summary": "Get one notice",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "noticeId",
+            "required": true,
+            "description": "Notice id"
+          }
+        ],
+        "requestBody": {},
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoticeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
+          },
+          "404": {
+            "description": "Wrong address or id",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Notices"],
+        "summary": "Delete my notice",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "noticeId",
+            "required": true,
+            "description": "Notice id"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {},
+        "responses": {
+          "204": {
+            "description": "No content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DelMyNoticeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {}
+          },
+          "404": {
+            "description": "Wrong address or id",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
     }
   },
 
@@ -1003,76 +1089,30 @@
       },
 
       "NoticesCategoryResponse": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "_id": {
-              "type": "string",
-              "description": "Notice id",
-              "example": "641710354b7fae4970a34478"
-            },
-            "category": {
-              "type": "string",
-              "description": "Notice category",
-              "example": "sell"
-            },
-            "title": {
-              "type": "string",
-              "description": "Notice title",
-              "example": "Capitan Morgan"
-            },
-            "name": {
-              "type": "string",
-              "description": "Pet's name",
-              "example": "Dog"
-            },
-            "birthday": {
-              "type": "string",
-              "description": "Pet's birthday",
-              "example": "2023-12-07T23:00:00.000Z"
-            },
-            "breed": {
-              "type": "string",
-              "description": "Pet's breed",
-              "example": "German sheppard"
-            },
-            "location": {
-              "type": "string",
-              "description": "Location",
-              "example": "Kyiv, Kyiv"
-            },
-            "sex": {
-              "type": "string",
-              "description": "Pet's sex",
-              "example": "male"
-            },
-            "comments": {
-              "type": "string",
-              "description": "Notice comments",
-              "example": "Murzik for sale"
-            },
-            "avatarURL": {
-              "type": "string",
-              "description": "Pet's avatar",
-              "example": "https://"
-            },
-            "price": {
-              "type": "number",
-              "description": "Notice price",
-              "example": 1
-            },
-            "favorite": {
-              "type": "array",
-              "description": "User's id",
-              "example": []
-            },
-            "owner": {
-              "type": "string",
-              "description": "Owner id",
-              "example": "64170f9d4b7fae4970a34473"
+        "type": "object",
+        "properties": {
+          "notices": []
+        },
+        "example": {
+          "notices": [
+            {
+              "_id": "641710354b7fae4970a34478",
+              "category": "sell",
+              "title": "Capitan Morgan",
+              "name": "Dog",
+              "birthday": "2023-12-07T23:00:00.000Z",
+              "breed": "German sheppard",
+              "location": "Kyiv, Kyiv",
+              "sex": "male",
+              "comments": "Murzik for sale",
+              "image": "https://",
+              "price": 1,
+              "favorite": [],
+              "owner": "64170f9d4b7fae4970a34473"
             }
-          }
+          ],
+          "skip": "1",
+          "limit": "4"
         }
       },
 
@@ -1155,11 +1195,11 @@
             "description": "Notice title",
             "example": "Mursik for sale"
           },
-           "category": {
-              "type": "string",
-              "description": "Notice category",
-              "example": "sell"
-            },
+          "category": {
+            "type": "string",
+            "description": "Notice category",
+            "example": "sell"
+          },
           "name": {
             "type": "string",
             "description": "Pet's name",
@@ -1363,6 +1403,97 @@
               "description": "Notice updatedAt",
               "example": "2023-01-30T22:04:29.984Z"
             }
+          }
+        }
+      },
+
+      "NoticeResponse": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Notice id",
+            "example": "6416c2c3a66a953bcc73999a"
+          },
+          "category": {
+            "type": "string",
+            "description": "Notice category",
+            "example": "sell"
+          },
+          "title": {
+            "type": "string",
+            "description": "Notice title",
+            "example": "Mursik for sale"
+          },
+          "name": {
+            "type": "string",
+            "description": "Pet's name",
+            "example": "Mursik"
+          },
+          "birthday": {
+            "type": "string",
+            "description": "Pet's birthday",
+            "example": "2002-12-20T22:00:00.000Z"
+          },
+          "breed": {
+            "type": "string",
+            "description": "Pet's breed",
+            "example": "German sheppard"
+          },
+          "sex": {
+            "type": "string",
+            "description": "Pet's sex",
+            "example": "male"
+          },
+          "location": {
+            "type": "string",
+            "description": "Location",
+            "example": "Kyiv, Kyiv"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Notice comments",
+            "example": "Mursik for sale"
+          },
+          "image": {
+            "type": "string",
+            "description": "Pet's avatar",
+            "example": "https://"
+          },
+          "price": {
+            "type": "number",
+            "description": "Notice price",
+            "example": 1
+          },
+          "favorite": {
+            "type": "array",
+            "description": "User's phone",
+            "example": []
+          },
+          "owner": {
+            "type": "string",
+            "example": "6416be486977b47c2e4f018a"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Notice createdAt",
+            "example": "2023-03-19T08:07:31.067Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "Notice updatedAt",
+            "example": "2023-03-19T08:07:31.067Z"
+          }
+        }
+      },
+
+      "DelMyNoticeResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Notice deleted",
+            "example": "Notice deleted"
           }
         }
       }

@@ -10,6 +10,6 @@ const getNoticeById = async (req, res) => {
     throw HttpError(404, "Not found");
   }
 
-  res.status(200).json({ notice, status: "success" });
+  res.status(200).json(notice);
 };
 module.exports = getNoticeById;
