@@ -1,23 +1,23 @@
 const { Notice } = require("../../models/notice");
 const { HttpError } = require("../../helpers");
 
-const addNoticeFavorite = async (req, res, next) => {
+const delNoticeFavorite = async (req, res, next) => {
   const { _id: userId } = req.user;
 
   const { id } = req.params;
 
   const { favorite } = await Notice.findOne({ _id: id });
 
-  if (favorite.includes(userId)) {
-    throw HttpError(500, "Notice already added to favorites");
+  if (!favorite.includes(userId)) {
+    throw HttpError(500, "Notice not in favorites");
   }
 
   const notice = await Notice.findOneAndUpdate(
     { _id: id },
-    { $push: { favorite: userId } }
+    { $pull: { favorite: userId } }
   );
 
   res.status(200).json({ notice, status: "success" });
 };
 
-module.exports = addNoticeFavorite;
+module.exports = delNoticeFavorite;

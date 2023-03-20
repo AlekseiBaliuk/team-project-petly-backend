@@ -1,7 +1,6 @@
 const { Notice } = require("../../models/notice");
 
 const listNoticeCategory = async (req, res) => {
-  // const { _id: owner } = req.user;
   const { category } = req.params;
   const { page = 1, limit = 8 } = req.query;
 
