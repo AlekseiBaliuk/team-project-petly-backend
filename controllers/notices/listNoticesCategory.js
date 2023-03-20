@@ -10,7 +10,7 @@ const listNoticeCategory = async (req, res) => {
     skip,
     limit,
   }).sort({ createdAt: -1 });
-  res.status(200).json(notices);
+  res.status(200).json({ notices, skip, limit });
 };
 
 module.exports = listNoticeCategory;
