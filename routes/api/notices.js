@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { ctrlWrapper } = require("../../helpers");
-const { validation, isValidPetId, auth } = require("../../middlewares");
+const { validation, isValidPetId, auth, upload } = require("../../middlewares");
 
 const { joiNoticesSchema } = require("../../models/notice");
 
@@ -16,6 +16,7 @@ router.get("/", auth, ctrlWrapper(ctrl.listUserNotices));
 router.post(
   "/",
   auth,
+  upload.single("image"),
   validation(joiNoticesSchema),
   ctrlWrapper(ctrl.addNotice)
 );

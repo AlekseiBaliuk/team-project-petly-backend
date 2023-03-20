@@ -2,7 +2,6 @@ const cloudinary = require("cloudinary").v2;
 const dotenv = require("dotenv");
 const fs = require("fs/promises");
 const { CLOUD_NAME, API_KEY, API_SECRET } = process.env;
-// console.log(CLOUD_NAME, API_KEY, API_SECRET);
 
 dotenv.config();
 
@@ -14,7 +13,6 @@ cloudinary.config({
 });
 
 const cloudinaryImgUpload = async (req) => {
-
   if (req.file) {
     const { path: tempUpload } = req.file;
 
@@ -23,8 +21,8 @@ const cloudinaryImgUpload = async (req) => {
         await cloudinary.uploader.upload(tempUpload, {
           folder: "images",
           transformation: {
-            with: 200,
-            height: 200,
+            with: 288,
+            height: 288,
             gravity: "auto",
             crop: "fill",
           },

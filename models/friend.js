@@ -8,7 +8,7 @@ const friendSchema = Schema(
     },
     url: String,
     addressUrl: String,
-    imageUrl: String,
+    avatarURL: String,
     address: String,
     workDays: [
       {

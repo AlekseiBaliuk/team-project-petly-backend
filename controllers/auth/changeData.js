@@ -23,6 +23,11 @@ const changeData = async (req, res) => {
     result = await User.findByIdAndUpdate(_id, { birthday }, { new: true });
   }
   if (avatarURL) {
+    const user = await User.findOne(id);
+    await cloudinary.uploader.destroy(user.idCloudAvatar, {
+      folder: "images",
+    });
+    
     result = await User.findByIdAndUpdate(
       _id,
       { avatarURL, idCloudAvatar },
