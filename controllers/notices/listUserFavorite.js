@@ -10,7 +10,7 @@ const listUserFavorite = async (req, res) => {
     {
       favorite: { $in: userId },
     },
-    "-createdAt -updatedAt",
+    "-createdAt -updatedAt -idCloudAvatar",
     {
       skip,
       limit,
@@ -20,6 +20,7 @@ const listUserFavorite = async (req, res) => {
   });
 
   res.status(200).json({ page, per_page: limit, notices });
+
 };
 
 module.exports = listUserFavorite;

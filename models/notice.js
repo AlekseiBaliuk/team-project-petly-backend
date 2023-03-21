@@ -71,7 +71,6 @@ const joiNoticesSchema = Joi.object({
   name: Joi.string().min(2).max(16).required(),
   birthday: Joi.string()
     .regex(/^([0-2][1-9]|[1-3]0|31)\.(0[1-9]|1[0-2])\.\d{4}$/)
-    .required()
     .custom((value, helpers) => {
       const day = parseInt(value.slice(0, 2));
       const month = parseInt(value.slice(3, 5));
@@ -87,7 +86,7 @@ const joiNoticesSchema = Joi.object({
         }
       }
 
-      if (year < 1000 || year > 9999) {
+      if (year < 1000 || year > 9999 || year > new Date().getFullYear()) {
         return helpers.error("any.invalid");
       }
 
