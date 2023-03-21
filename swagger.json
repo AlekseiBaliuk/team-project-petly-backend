@@ -951,7 +951,7 @@
       "UpdateUserImgRequest": {
         "type": "object",
         "properties": {
-          "avatarURL": {
+          "image": {
             "type": "string",
             "format": "binary"
           }
@@ -1114,7 +1114,7 @@
             "type": "string",
             "description": "Comments"
           },
-          "avatarURL": {
+          "image": {
             "type": "string",
             "format": "binary"
           }
@@ -1243,17 +1243,17 @@
               "name": "Dog",
               "birthday": "10.01.2021",
               "breed": "German sheppard",
-              "location": "Kyiv, Kyiv",
               "sex": "male",
+              "location": "Kyiv, Kyiv",
               "comments": "Murzik for sale",
-              "avatarURL": "https://",
               "price": 1,
+              "avatarURL": "https://",
               "favorite": [],
               "owner": "64170f9d4b7fae4970a34473"
             }
           ],
-          "skip": "1",
-          "limit": "4"
+          "page": 1,
+          "per_page": 8
         }
       },
 
@@ -1376,7 +1376,7 @@
             "description": "Notice price",
             "example": 1
           },
-          "avatarURL": {
+          "image": {
             "type": "string",
             "format": "binary"
           }
@@ -1386,7 +1386,7 @@
       "AddMyNoticeResponse": {
         "type": "object",
         "properties": {
-          "newNotice": {
+          "notice": {
             "type": "object",
             "properties": {
               "title": {
@@ -1470,76 +1470,30 @@
       },
 
       "AllMyNoticeResponse": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "_id": {
-              "type": "string",
-              "description": "Notice id",
-              "example": "64184faeddbecbc68b3336d6"
-            },
-            "category": {
-              "type": "string",
-              "description": "Notice category",
-              "example": "sell"
-            },
-            "title": {
-              "type": "string",
-              "description": "Notice title",
-              "example": "Сute Dog"
-            },
-            "name": {
-              "type": "string",
-              "description": "Pet's name",
-              "example": "Fill"
-            },
-            "birthday": {
-              "type": "string",
-              "description": "Pet's birthday",
-              "example": "10.01.2021"
-            },
-            "breed": {
-              "type": "string",
-              "description": "Pet's breed",
-              "example": "German sheppard"
-            },
-            "sex": {
-              "type": "string",
-              "description": "Pet's sex",
-              "example": "male"
-            },
-            "location": {
-              "type": "string",
-              "description": "Location",
-              "example": "Kyiv, Kyiv"
-            },
-            "comments": {
-              "type": "string",
-              "description": "Notice comments",
-              "example": "Mursik for sale"
-            },
-            "avatarURL": {
-              "type": "string",
-              "description": "Pet's avatar",
-              "example": "https://"
-            },
-            "price": {
-              "type": "number",
-              "description": "Notice price",
-              "example": 1
-            },
-            "favorite": {
-              "type": "array",
-              "description": "User's phone",
-              "example": []
-            },
-            "owner": {
-              "type": "string",
-              "description": "Owner id",
-              "example": "64170f9d4b7fae4970a34473"
+        "type": "object",
+        "properties": {
+          "notices": []
+        },
+        "example": {
+          "notices": [
+            {
+              "_id": "641710354b7fae4970a34478",
+              "category": "sell",
+              "title": "Capitan Morgan",
+              "name": "Dog",
+              "birthday": "10.01.2021",
+              "breed": "German sheppard",
+              "sex": "male",
+              "location": "Kyiv, Kyiv",
+              "comments": "Murzik for sale",
+              "price": 1,
+              "avatarURL": "https://",
+              "favorite": [],
+              "owner": "64170f9d4b7fae4970a34473"
             }
-          }
+          ],
+          "page": 1,
+          "per_page": 8
         }
       },
 
@@ -1630,70 +1584,28 @@
       "NoticeTitleResponse": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type": "string",
-            "description": "Notice id",
-            "example": "6416c2c3a66a953bcc73999a"
-          },
-          "category": {
-            "type": "string",
-            "description": "Notice category",
-            "example": "sell"
-          },
-          "title": {
-            "type": "string",
-            "description": "Notice title",
-            "example": "Сute Dog"
-          },
-          "name": {
-            "type": "string",
-            "description": "Pet's name",
-            "example": "Sheppel"
-          },
-          "birthday": {
-            "type": "string",
-            "description": "Pet's birthday",
-            "example": "10.01.2021"
-          },
-          "breed": {
-            "type": "string",
-            "description": "Pet's breed",
-            "example": "Pomeranian"
-          },
-          "sex": {
-            "type": "string",
-            "description": "Pet's sex",
-            "example": "male"
-          },
-          "location": {
-            "type": "string",
-            "description": "Location",
-            "example": "Lviv"
-          },
-          "comments": {
-            "type": "string",
-            "description": "Notice comments",
-            "example": "Сute Dog looking for a home"
-          },
-          "price": {
-            "type": "number",
-            "description": "Notice price",
-            "example": 1
-          },
-          "avatarURL": {
-            "type": "string",
-            "description": "Pet's avatar",
-            "example": "https://"
-          },
-          "favorite": {
-            "type": "array",
-            "description": "User's phone",
-            "example": []
-          },
-          "owner": {
-            "type": "string",
-            "example": "641569ddd95d1bcfef69ab73"
-          }
+          "notices": []
+        },
+        "example": {
+          "notices": [
+            {
+              "_id": "641710354b7fae4970a34478",
+              "category": "sell",
+              "title": "Capitan Morgan",
+              "name": "Dog",
+              "birthday": "10.01.2021",
+              "breed": "German sheppard",
+              "sex": "male",
+              "location": "Kyiv, Kyiv",
+              "comments": "Murzik for sale",
+              "price": 1,
+              "avatarURL": "https://",
+              "favorite": [],
+              "owner": "64170f9d4b7fae4970a34473"
+            }
+          ],
+          "page": 1,
+          "per_page": 8
         }
       },
 
@@ -1753,16 +1665,17 @@
               "name": "Dog",
               "birthday": "10.01.2021",
               "breed": "German sheppard",
-              "location": "Kyiv, Kyiv",
               "sex": "male",
+              "location": "Kyiv, Kyiv",
               "comments": "Murzik for sale",
-              "avatarURL": "https://",
               "price": 1,
+              "avatarURL": "https://",
               "favorite": [],
-              "owner": "64170f9d4b7fae4970a34473",
-              "idCloudAvatar": "images/szl4p5csezqnilfcbbsg"
+              "owner": "64170f9d4b7fae4970a34473"
             }
-          ]
+          ],
+          "page": 1,
+          "per_page": 8
         }
       }
     },

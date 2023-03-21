@@ -13,7 +13,7 @@ const listNoticeTitle = async (req, res) => {
       limit,
     }
   ).sort({ createdAt: -1 });
-  res.status(200).json(notices);
+  res.status(200).json({ notices, page, per_page: limit });
 };
 
 module.exports = listNoticeTitle;
