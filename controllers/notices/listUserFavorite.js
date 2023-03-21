@@ -19,7 +19,7 @@ const listUserFavorite = async (req, res) => {
     createdAt: -1,
   });
 
-  res.status(200).json({ notices });
+  res.status(200).json({ page, per_page: limit, notices });
 };
 
 module.exports = listUserFavorite;
