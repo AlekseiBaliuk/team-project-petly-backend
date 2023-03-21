@@ -30,6 +30,7 @@ const noticeSchema = new mongoose.Schema(
     },
     location: {
       type: String,
+      required: [true, "City/region is required"],
     },
     comments: {
       type: String,
@@ -100,9 +101,11 @@ const joiNoticesSchema = Joi.object({
     .required(),
   breed: Joi.string().min(2).max(24).required(),
   sex: Joi.string().required(),
-  location: Joi.string().required(),
+  location: Joi.string()
+    .regex(/^[A-Za-z\s]+,\s[A-Za-z\s]+$/)
+    .required(),
   comments: Joi.string().min(8).max(120).required(),
-  price: Joi.number(),
+  price: Joi.number().min(1),
   avatarURL: Joi.string(),
 });
 
