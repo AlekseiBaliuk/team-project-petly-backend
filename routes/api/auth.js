@@ -11,6 +11,7 @@ const {
   joiRegisterSchema,
   joiLoginSchema,
   userUpdateSchema,
+  joiRefreshSchema,
 } = require("../../models/user");
 
 router.post(
@@ -20,6 +21,12 @@ router.post(
 );
 
 router.post("/login", validation(joiLoginSchema), ctrlWrapper(ctrl.login));
+
+router.post(
+  "/refresh",
+  validation(joiRefreshSchema),
+  ctrlWrapper(ctrl.refresh)
+);
 
 router.patch(
   "/changeData",
