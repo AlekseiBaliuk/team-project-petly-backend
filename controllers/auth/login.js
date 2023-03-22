@@ -16,9 +16,6 @@ const login = async (req, res) => {
   if (!passCompare) {
     throw HttpError(401, "Password is wrong");
   }
-  // if (!user.verify) {
-  //   throw HttpErrors(403, " Email is not verified");
-  // }
 
   const payload = {
     id: user._id,
@@ -26,6 +23,7 @@ const login = async (req, res) => {
 
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "23h" });
   await User.findByIdAndUpdate(user._id, { token });
+
   res.json({
     token,
     user: {

@@ -841,6 +841,11 @@
       "RegistrationResponse": {
         "type": "object",
         "properties": {
+          "token": {
+            "type": "string",
+            "description": "User's token",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZDUzMzI4ZTkyNmUzNzBkNGYwMTY3YSIsImlhdCI6MTY3NDkxNjY0OCwiZXhwIjoxNjc0OTk5NDQ4fQ.T5GjdzWA58e66QFCQaC4efICjn1SP-lG6u-DHs9_-LI"
+          },
           "user": {
             "type": "object",
             "properties": {
