@@ -13,6 +13,8 @@ const router = express.Router();
 
 router.get("/", auth, ctrlWrapper(userCtrl.getUserData));
 
+router.get("/current", auth, ctrlWrapper(userCtrl.getCurrentUser));
+
 router.get("/pets", auth, ctrlWrapper(petCtrl.getUserPets));
 
 router.post(
