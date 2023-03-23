@@ -67,8 +67,34 @@ const noticeSchema = new mongoose.Schema(
 
 const joiNoticesSchema = Joi.object({
   category: Joi.string().required(),
-  title: Joi.string().min(2).max(48).required(),
-  name: Joi.string().min(2).max(16).required(),
+  title: Joi.string()
+    .regex(/^[A-Za-z\s]+$/)
+    .trim()
+    .min(2)
+    .max(48)
+    .required()
+    .messages({
+      "string.base": "Title must be a string",
+      "string.empty": "Title cannot be empty",
+      "string.pattern.base": "Title must contain only letters",
+      "string.min": "Title must be at least {#limit} characters long",
+      "string.max": "Title must be not exceed {#limit} characters",
+      "any.required": "Title is a required field",
+    }),
+  name: Joi.string()
+    .regex(/^[A-Za-z\s]+$/)
+    .trim()
+    .min(2)
+    .max(16)
+    .required()
+    .messages({
+      "string.base": "Name must be a string",
+      "string.empty": "Name cannot be empty",
+      "string.pattern.base": "Name must contain only letters",
+      "string.min": "Name must be at least {#limit} characters long",
+      "string.max": "Name must be not exceed {#limit} characters",
+      "any.required": "Name is a required field",
+    }),
   birthday: Joi.string()
     .regex(/^([0-2][1-9]|[1-3]0|31)\.(0[1-9]|1[0-2])\.\d{4}$/)
     .custom((value, helpers) => {
@@ -98,13 +124,35 @@ const joiNoticesSchema = Joi.object({
       "any.invalid": "Invalid date",
     })
     .required(),
-  breed: Joi.string().min(2).max(24).required(),
+  breed: Joi.string()
+    .regex(/^[A-Za-z\s]+$/)
+    .trim()
+    .min(2)
+    .max(24)
+    .required()
+    .messages({
+      "string.base": "Breed must be a string",
+      "string.empty": "Breed cannot be empty",
+      "string.pattern.base": "Breed must contain only letters",
+      "string.min": "Breed must be at least {#limit} characters long",
+      "string.max": "Breed must be not exceed {#limit} characters",
+      "any.required": "Breed is a required field",
+    }),
   sex: Joi.string().required(),
   location: Joi.string()
     .regex(/^[A-Za-z\s]+,\s[A-Za-z\s]+$/)
     .required(),
   comments: Joi.string().min(8).max(120).required(),
-  price: Joi.number().min(1),
+  price: Joi.string()
+    .regex(/^(?!0\d)\d+(?:\.\d{1,2})?$/)
+    .required()
+    .messages({
+      "string.base": "Price must be a string",
+      "string.empty": "Price cannot be empty",
+      "string.pattern.base":
+        "Price must be a number that does not start with 0",
+      "any.required": "Price is a required field",
+    }),
   avatarURL: Joi.string(),
 });
 
