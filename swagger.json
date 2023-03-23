@@ -1293,7 +1293,7 @@
           "birthday": {
             "type": "string",
             "description": "Pet's birthday",
-            "example": "2002-12-20T22:00:00.000Z"
+            "example": "10.01.2021"
           },
           "breed": {
             "type": "string",
@@ -1354,7 +1354,7 @@
           "birthday": {
             "type": "string",
             "description": "Pet's birthday",
-            "example": "2002-12-20T22:00:00.000Z"
+            "example": "10.01.2021"
           },
           "breed": {
             "type": "string",
