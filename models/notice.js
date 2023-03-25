@@ -145,7 +145,6 @@ const joiNoticesSchema = Joi.object({
   comments: Joi.string().min(8).max(120).required(),
   price: Joi.string()
     .regex(/^(?!0\d)\d+(?:\.\d{1,2})?$/)
-    .required()
     .messages({
       "string.base": "Price must be a string",
       "string.empty": "Price cannot be empty",
