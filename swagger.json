@@ -1532,7 +1532,11 @@
               "price": 1,
               "avatarURL": "https://",
               "favorite": [],
-              "owner": "64170f9d4b7fae4970a34473"
+              "owner": {
+                "_id": "64182d032467dc940b5a1e67",
+                "email": "DmytroNedilko0@gmail.com",
+                "phone": "+380123456789"
+              }
             }
           ],
           "page": 1,
@@ -1647,7 +1651,11 @@
               "price": 1,
               "avatarURL": "https://",
               "favorite": [],
-              "owner": "64170f9d4b7fae4970a34473"
+              "owner": {
+                "_id": "64182d032467dc940b5a1e67",
+                "email": "DmytroNedilko0@gmail.com",
+                "phone": "+380123456789"
+              }
             }
           ],
           "page": 1,
@@ -1717,7 +1725,11 @@
               "price": 1,
               "avatarURL": "https://",
               "favorite": [],
-              "owner": "64170f9d4b7fae4970a34473"
+              "owner": {
+                "_id": "64182d032467dc940b5a1e67",
+                "email": "DmytroNedilko0@gmail.com",
+                "phone": "+380123456789"
+              }
             }
           ],
           "page": 1,
