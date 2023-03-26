@@ -10,7 +10,7 @@ const getUserData = async (req, res) => {
     birthday,
     avatarURL,
   } = req.user;
-  const userPet = await UserPet.find(
+  const userPets = await UserPet.find(
     { owner: id },
     "-createdAt -updatedAt -idCloudAvatar"
   );
@@ -25,7 +25,7 @@ const getUserData = async (req, res) => {
       birthday,
       avatarURL,
     },
-    userPet,
+    userPets,
   });
 };
 

@@ -12,10 +12,12 @@ const listNoticeCategory = async (req, res) => {
       skip,
       limit,
     }
+
   ).sort({ createdAt: -1 });
   const total = await Notice.find({ category }).count();
 
   res.status(200).json({ notices, page, per_page: limit, total });
+
 };
 
 module.exports = listNoticeCategory;

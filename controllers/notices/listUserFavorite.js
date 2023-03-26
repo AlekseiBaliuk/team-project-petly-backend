@@ -15,9 +15,11 @@ const listUserFavorite = async (req, res) => {
       skip,
       limit,
     }
-  ).sort({
-    createdAt: -1,
-  });
+  )
+    .sort({
+      createdAt: -1,
+    })
+    .populate("owner", "email phone");
 
   const total = await Notice.find({
     favorite: { $in: userId },

@@ -239,6 +239,40 @@
       }
     },
 
+    "/api/users/current": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get current user",
+        "parameters": [],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {},
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentUserResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
+    },
+
     "/api/users/pets": {
       "post": {
         "tags": ["Users"],
@@ -1254,7 +1288,11 @@
               "price": 1,
               "avatarURL": "https://",
               "favorite": [],
-              "owner": "64170f9d4b7fae4970a34473"
+              "owner": {
+                "_id": "64181037d11f642779b84d3f",
+                "email": "email@example.com",
+                "phone": "+380991234567"
+              }
             }
           ],
           "page": 1,
@@ -1293,7 +1331,7 @@
           "birthday": {
             "type": "string",
             "description": "Pet's birthday",
-            "example": "2002-12-20T22:00:00.000Z"
+            "example": "10.01.2021"
           },
           "breed": {
             "type": "string",
@@ -1354,7 +1392,7 @@
           "birthday": {
             "type": "string",
             "description": "Pet's birthday",
-            "example": "2002-12-20T22:00:00.000Z"
+            "example": "10.01.2021"
           },
           "breed": {
             "type": "string",
@@ -1494,7 +1532,11 @@
               "price": 1,
               "avatarURL": "https://",
               "favorite": [],
-              "owner": "64170f9d4b7fae4970a34473"
+              "owner": {
+                "_id": "64182d032467dc940b5a1e67",
+                "email": "DmytroNedilko0@gmail.com",
+                "phone": "+380123456789"
+              }
             }
           ],
           "page": 1,
@@ -1565,23 +1607,26 @@
             "description": "User's phone",
             "example": []
           },
+
           "owner": {
-            "type": "string",
-            "example": "641569ddd95d1bcfef69ab73"
-          },
-          "idCloudAvatar": {
-            "type": "string",
-            "example": "images/szl4p5csezqnilfcbbsg"
-          },
-          "createdAt": {
-            "type": "string",
-            "description": "Notice createdAt",
-            "example": "2023-03-20T12:21:02.119Z"
-          },
-          "updatedAt": {
-            "type": "string",
-            "description": "Notice updatedAt",
-            "example": "2023-03-20T12:21:02.119Z"
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "description": "User's id",
+                "example": "641acbdb39ffcd57e701959b"
+              },
+              "email": {
+                "type": "string",
+                "description": "User's email",
+                "format": "email"
+              },
+              "phone": {
+                "type": "string",
+                "description": "User's phone",
+                "example": "+380000000000"
+              }
+            }
           }
         }
       },
@@ -1606,7 +1651,11 @@
               "price": 1,
               "avatarURL": "https://",
               "favorite": [],
-              "owner": "64170f9d4b7fae4970a34473"
+              "owner": {
+                "_id": "64182d032467dc940b5a1e67",
+                "email": "DmytroNedilko0@gmail.com",
+                "phone": "+380123456789"
+              }
             }
           ],
           "page": 1,
@@ -1676,11 +1725,41 @@
               "price": 1,
               "avatarURL": "https://",
               "favorite": [],
-              "owner": "64170f9d4b7fae4970a34473"
+              "owner": {
+                "_id": "64182d032467dc940b5a1e67",
+                "email": "DmytroNedilko0@gmail.com",
+                "phone": "+380123456789"
+              }
             }
           ],
           "page": 1,
           "per_page": 8
+        }
+      },
+
+      "CurrentUserResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "User's id",
+                "example": "64181037d11f642779b84d3f"
+              },
+              "name": {
+                "type": "string",
+                "description": "User's name",
+                "example": "Bob Marley"
+              },
+              "email": {
+                "type": "string",
+                "description": "User's email",
+                "format": "email"
+              }
+            }
+          }
         }
       }
     },
