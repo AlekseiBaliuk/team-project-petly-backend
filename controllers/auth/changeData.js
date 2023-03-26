@@ -12,7 +12,7 @@ const changeData = async (req, res) => {
     userIdCloudAvatar = idCloudAvatar;
   }
 
-  const { email, name, city, phone, birthday } = req.body;
+  const { email, name, location, phone, birthday } = req.body;
   const { _id } = req.user;
   let result;
   if (email) {
@@ -21,8 +21,8 @@ const changeData = async (req, res) => {
   if (name) {
     result = await User.findByIdAndUpdate(_id, { name }, { new: true });
   }
-  if (city) {
-    result = await User.findByIdAndUpdate(_id, { city }, { new: true });
+  if (location) {
+    result = await User.findByIdAndUpdate(_id, { location }, { new: true });
   }
   if (phone) {
     result = await User.findByIdAndUpdate(_id, { phone }, { new: true });
@@ -49,7 +49,7 @@ const changeData = async (req, res) => {
     user: {
       name,
       email,
-      city,
+      location,
       phone,
       birthday,
       avatarURL: userAvatarURL,
