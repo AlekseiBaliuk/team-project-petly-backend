@@ -15,7 +15,11 @@ const listNoticeTitle = async (req, res) => {
   )
     .sort({ createdAt: -1 })
     .populate("owner", "email phone");
-  res.status(200).json({ notices, page, per_page: limit });
+
+  const total = await Notice.find({
+    title: { $regex: new RegExp(title, "i") },
+  }).count();
+  res.status(200).json({ notices, page, per_page: limit, total });
 };
 
 module.exports = listNoticeTitle;
