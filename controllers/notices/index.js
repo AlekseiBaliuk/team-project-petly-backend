@@ -7,7 +7,8 @@ const listNoticeTitle = require("./listNoticeTitle");
 const listUserFavorite = require("./listUserFavorite");
 const listUserNotices = require("./listUserNotices");
 const delUserNotice = require("./delUserNotice");
-const searchNoticeByTitle = require("./searchNoticeByTitle");
+const searchFavoriteNoticeByTitle = require("./searchFavoriteNoticeByTitle");
+const searchUserNoticeByTitle = require("./searchUserNoticeByTitle");
 
 module.exports = {
   addNotice,
@@ -19,5 +20,6 @@ module.exports = {
   listUserFavorite,
   listUserNotices,
   delUserNotice,
-  searchNoticeByTitle,
+  searchFavoriteNoticeByTitle,
+  searchUserNoticeByTitle,
 };

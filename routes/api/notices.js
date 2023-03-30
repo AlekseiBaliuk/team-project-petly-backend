@@ -10,10 +10,12 @@ const { notices: ctrl } = require("../../controllers");
 
 router.get("/category/:category", ctrlWrapper(ctrl.listNoticeCategory));
 router.get("/title/:category/:title", ctrlWrapper(ctrl.listNoticeTitle));
-router.get("/title/:title", ctrlWrapper(ctrl.searchNoticeByTitle));
 router.get("/:id", isValidId, ctrlWrapper(ctrl.getNoticeById));
 router.get("/user/favorites", auth, ctrlWrapper(ctrl.listUserFavorite));
+router.get("/user/favorites/title/:title", auth, ctrlWrapper(ctrl.searchFavoriteNoticeByTitle));
 router.get("/", auth, ctrlWrapper(ctrl.listUserNotices));
+router.get("/title/:title", auth, ctrlWrapper(ctrl.searchUserNoticeByTitle));
+
 router.post(
   "/",
   auth,
