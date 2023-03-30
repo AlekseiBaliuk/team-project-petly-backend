@@ -17,6 +17,7 @@ const listNoticeTitle = async (req, res) => {
     .populate("owner", "email phone");
 
   const total = await Notice.find({
+    category,
     title: { $regex: new RegExp(title, "i") },
   }).count();
   res.status(200).json({ notices, page, per_page: limit, total });
