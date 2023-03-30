@@ -9,7 +9,7 @@ const { joiNoticesSchema } = require("../../models/notice");
 const { notices: ctrl } = require("../../controllers");
 
 router.get("/category/:category", ctrlWrapper(ctrl.listNoticeCategory));
-router.get("/title/:title", ctrlWrapper(ctrl.listNoticeTitle));
+router.get("/title/:category/:title", ctrlWrapper(ctrl.listNoticeTitle));
 router.get("/:id", isValidId, ctrlWrapper(ctrl.getNoticeById));
 router.get("/user/favorites", auth, ctrlWrapper(ctrl.listUserFavorite));
 router.get("/", auth, ctrlWrapper(ctrl.listUserNotices));

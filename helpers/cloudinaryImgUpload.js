@@ -13,7 +13,6 @@ cloudinary.config({
 });
 
 const cloudinaryImgUpload = async (req) => {
-  // console.log(req.file)
   if (req.file) {
     const { path: tempUpload } = req.file;
 
