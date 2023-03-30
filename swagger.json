@@ -596,7 +596,7 @@
       }
     },
 
-    "/api/notices/title/{title}": {
+    "/api/notices/title/{category}/{title}": {
       "get": {
         "tags": ["Notices"],
         "summary": "Get notice by title",

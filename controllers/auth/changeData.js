@@ -15,21 +15,8 @@ const changeData = async (req, res) => {
   const { email, name, location, phone, birthday } = req.body;
   const { _id } = req.user;
   let result;
-  if (email) {
-    result = await User.findByIdAndUpdate(_id, { email }, { new: true });
-  }
-  if (name) {
-    result = await User.findByIdAndUpdate(_id, { name }, { new: true });
-  }
-  if (location) {
-    result = await User.findByIdAndUpdate(_id, { location }, { new: true });
-  }
-  if (phone) {
-    result = await User.findByIdAndUpdate(_id, { phone }, { new: true });
-  }
-  if (birthday) {
-    result = await User.findByIdAndUpdate(_id, { birthday }, { new: true });
-  }
+  result = await User.findByIdAndUpdate(_id, req.body, { new: true });
+
   if (userAvatarURL) {
     const user = await User.findOne({ _id });
     if (user.idCloudAvatar) {
